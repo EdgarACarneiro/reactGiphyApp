@@ -13,27 +13,35 @@ class App extends Component {
         super();
         this.state = {
             giphy: GphApiClient("8XADJBZWvzB75qIDyCpfWLbnE5otD7wG"),
-            searchQuery: ""
+            searchQuery: "",
+            gifs: []
         };
 
         this.search = this.search.bind(this);
         this.updateQuery = this.updateQuery.bind(this);
         //this.getFavs = this.getFavs.bind(this);
-        //this.getFeed = this.getFeed.bind(this);
     }
 
     search(event) {
         event.preventDefault();
 
-        this.state.giphy.search('gifs', { "q": this.state.input })
+        this.state.giphy.search('gifs', { "q": this.state.searchQuery })
             .then((response) => {
-                response.data.forEach((gifObject) => {
-                    console.log(gifObject);
-                    //Talvez ter uma variável feed ou some shit
+                this.setState({
+                    gifs: []
+                });
+
+                response.data.forEach((gif) => {
+                    let newArray = this.state.gifs.slice();
+                    newArray.push(gif.images.fixed_height_downsampled.gif_url);
+
+                    this.setState({
+                        gifs: newArray
+                    });
                 })
             })
             .catch((err) => {
-                // Talvez retornar um alert
+                // Maybe Alert Danger
             });
     }
 
@@ -50,7 +58,7 @@ class App extends Component {
                     FavGiphy
                 </PageHeader>
                 <Search query={this.state.searchQuery} search={this.search} handleChange={this.updateQuery} />
-                <Functionalities />
+                <Functionalities feed={this.state.gifs} />
             </section>
         );
     }
