@@ -59,8 +59,6 @@ class App extends Component {
             if (storageFavorites == null)
                 return;
 
-            console.log("Favorites:"); console.log(storageFavorites);
-
             this.setState({
                 favorites: storageFavorites.split(",")
             });
@@ -100,28 +98,30 @@ class App extends Component {
     }
 
     addFavorite(event, gif) {
-
-        let newArray = this.state.favorites.slice();
-        newArray.push(gif);
-        this.setState({
-            favorites: newArray
-        });
-
-        localStorage.setItem("favorites", newArray);
-        console.log(newArray);
-        console.log(localStorage.getItem("favorites"));
-    }
-
-    removeFavorite(event, gif) {
-
         let index = this.state.favorites.indexOf(gif);
-        if (index > -1) {
+
+        // Meaning gif does not yet exist
+        if (index == -1) {
             let newArray = this.state.favorites.slice();
-            newArray.splice(index, 1);
+            newArray.push(gif);
+
             this.setState({
                 favorites: newArray
             });
+            localStorage.setItem("favorites", newArray);
+        }
+    }
 
+    removeFavorite(event, gif) {
+        let index = this.state.favorites.indexOf(gif);
+
+        if (index > -1) {
+            let newArray = this.state.favorites.slice();
+            newArray.splice(index, 1);
+
+            this.setState({
+                favorites: newArray
+            });
             localStorage.setItem("favorites", newArray);
         }
     }
