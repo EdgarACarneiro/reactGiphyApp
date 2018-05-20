@@ -9,11 +9,11 @@ class Functionalities extends Component {
     render() {
         return (
             <Tabs defaultActiveKey={2} id="uncontrolled-tab-example">
-                <Tab eventKey={1} title="Favorites">
-                    <Favs />
-                </Tab>
-                <Tab eventKey={2} title="Feed">
+                <Tab eventKey={1} title="Feed">
                     <Feed />
+                </Tab>
+                <Tab eventKey={2} title="Favorites">
+                    <Favs />
                 </Tab>
             </Tabs>
         );
