@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class Favs extends Component {
+class Favorites extends Component {
 
     render() {
         return (
@@ -9,4 +9,4 @@ class Favs extends Component {
     }
 }
 
-export default Favs;
+export default Favorites;

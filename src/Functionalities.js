@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Tabs, Tab } from 'react-bootstrap';
 
-import Favs from './Favs';
+import Favorites from './Favorites';
 import Feed from './Feed';
 
 class Functionalities extends Component {
@@ -16,7 +16,7 @@ class Functionalities extends Component {
                     <Feed gifs={this.props.feed} />
                 </Tab>
                 <Tab eventKey={2} title="Favorites">
-                    <Favs />
+                    <Favorites />
                 </Tab>
             </Tabs>
         );

@@ -5,9 +5,13 @@ class Feed extends Component {
         super(props);
     }
 
+    shouldComponentUpdate(nextProps) {
+        return this.props != nextProps;
+    }
+
     render() {
         const gifs = this.props.gifs.map((gif, i) =>
-            <img key={i} src={gif} alt="A gif" />
+            <img key={i} src={gif} alt="" />
         );
 
         return (
