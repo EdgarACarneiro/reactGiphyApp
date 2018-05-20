@@ -12,10 +12,10 @@ class Functionalities extends Component {
         return (
             <Tabs defaultActiveKey={1} id="uncontrolled-tab-example">
                 <Tab eventKey={1} title="Feed">
-                    <GifsContainer gifs={this.props.feed} />
+                    <GifsContainer gifs={this.props.feed} action={this.props.feedAction} />
                 </Tab>
                 <Tab eventKey={2} title="Favorites">
-                    <GifsContainer gifs={this.props.favorites} />
+                    <GifsContainer gifs={this.props.favorites} action={this.props.favoritesAction} />
                 </Tab>
             </Tabs>
         );

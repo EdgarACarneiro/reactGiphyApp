@@ -11,7 +11,9 @@ class GifsContainer extends Component {
 
     render() {
         const gifs = this.props.gifs.map((gif, i) =>
-            <img key={i} src={gif} alt="" />
+            <img key={i} 
+            onClick={((event) => this.props.action(event, gif))} 
+            src={gif} alt="" />
         );
 
         return (
