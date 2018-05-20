@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class Feed extends Component {
+class GifsContainer extends Component {
     constructor(props) {
         super(props);
     }
@@ -22,4 +22,4 @@ class Feed extends Component {
     }
 }
 
-export default Feed;
+export default GifsContainer;

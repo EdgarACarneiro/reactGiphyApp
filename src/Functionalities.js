@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { Tabs, Tab } from 'react-bootstrap';
 
-import Favorites from './Favorites';
-import Feed from './Feed';
+import GifsContainer from './GifsContainer';
 
 class Functionalities extends Component {
     constructor(props)  {
@@ -13,10 +12,10 @@ class Functionalities extends Component {
         return (
             <Tabs defaultActiveKey={1} id="uncontrolled-tab-example">
                 <Tab eventKey={1} title="Feed">
-                    <Feed gifs={this.props.feed} />
+                    <GifsContainer gifs={this.props.feed} />
                 </Tab>
                 <Tab eventKey={2} title="Favorites">
-                    <Favorites />
+                    <GifsContainer gifs={this.props.favorites} />
                 </Tab>
             </Tabs>
         );
