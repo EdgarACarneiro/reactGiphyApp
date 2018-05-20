@@ -56,13 +56,13 @@ class App extends Component {
         if (typeof (Storage) !== "undefined") {
 
             let storageFavorites = localStorage.getItem("favorites");
-            if (storageFavorites == null || storageFavorites.length == 0)
+            if (storageFavorites == null)
                 return;
 
-            console.log("Favorites: " + storageFavorites);
+            console.log("Favorites:"); console.log(storageFavorites);
 
             this.setState({
-                favorites: storageFavorites
+                favorites: storageFavorites.split(",")
             });
 
         } else {
@@ -108,6 +108,8 @@ class App extends Component {
         });
 
         localStorage.setItem("favorites", newArray);
+        console.log(newArray);
+        console.log(localStorage.getItem("favorites"));
     }
 
     removeFavorite(event, gif) {
