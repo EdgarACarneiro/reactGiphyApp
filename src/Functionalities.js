@@ -13,18 +13,6 @@ class Functionalities extends Component {
         return (
             <Router>
                 <div>
-                    {/*<Tabs defaultActiveKey={1} id="uncontrolled-tab-example">
-                        <LinkContainer to="/feed">
-                            <Tab eventKey={1} title="Feed">
-                                <GifsContainer gifs={this.props.feed}
-                                action={this.props.feedAction} scrollAction={this.props.scrollFeed} />
-                            </Tab>
-                        </LinkContainer>
-                        <Tab eventKey={2} title="Favorites">
-                            <GifsContainer gifs={this.props.favorites}
-                                action={this.props.favoritesAction} scrollAction={this.props.scrollFavorites} />
-                        </Tab>
-                    </Tabs>*/}
                     <ul>
                         <li>
                             <Link to="/">Feed</Link>
@@ -36,10 +24,10 @@ class Functionalities extends Component {
 
                     <hr />
                     <Switch>
-                        <Route path="/Favorites" render={(props) => <GifsContainer {...props} gifs={this.props.favorites}
+                        <Route path="/Favorites" render={(props) => <GifsContainer {...props} hoverMsg={"unfavorite"} gifs={this.props.favorites}
                             action={this.props.favoritesAction} scrollAction={this.props.scrollFavorites} />} />
 
-                        <Route render={(props) => <GifsContainer {...props} gifs={this.props.feed}
+                        <Route render={(props) => <GifsContainer {...props} hoverMsg={"favorite"} gifs={this.props.feed}
                             action={this.props.feedAction} scrollAction={this.props.scrollFeed} />} />
                     </Switch>
                 </div>

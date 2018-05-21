@@ -23,13 +23,19 @@ class GifsContainer extends Component {
 
     render() {
         const gifs = this.props.gifs.map((gif, i) =>
-            <img key={i}
-                onClick={((event) => this.props.action(event, gif))}
-                src={gif} alt="" />
+            <figure key={i} className="effect-sarah">
+                <span>
+                    <img onClick={((event) => this.props.action(event, gif))}
+                        src={gif} alt="" />
+                </span>
+                <figcaption>
+                    <h2>{this.props.hoverMsg}</h2>
+                </figcaption>
+            </figure>
         );
 
         return (
-            <div>
+            <div className="grid">
                 {gifs}
             </div>
         );
