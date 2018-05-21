@@ -15,8 +15,11 @@ class App extends Component {
             giphy: GphApiClient("8XADJBZWvzB75qIDyCpfWLbnE5otD7wG"),
             searchQuery: "",
             gifs: [],
+            gifsOffset: 0,
             favorites: []
         };
+
+        this.infiniteScroll = this.infiniteScroll.bind(this);
 
         this.search = this.search.bind(this);
         this.updateQuery = this.updateQuery.bind(this);
@@ -28,13 +31,20 @@ class App extends Component {
     componentWillMount() {
         // Loading Giphs' feed
         this.loadFeed();
-
         // Loading Favorited Giphs
         this.loadFavorites();
     }
 
+    componentDidMount() {
+        window.addEventListener('scroll', this.infiniteScroll);
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener('scroll', this.infiniteScroll);
+    }
+
     loadFeed() {
-        this.state.giphy.trending("gifs", {})
+        this.state.giphy.trending("gifs", {"offset": this.state.gifsOffset})
             .then((response) => {
                 response.data.forEach((gif) => {
                     let newArray = this.state.gifs.slice();
@@ -50,11 +60,20 @@ class App extends Component {
             });
     }
 
+    infiniteScroll(event) {
+
+        // Check if at the end of the page
+        if ((window.innerHeight + window.scrollY) < document.body.offsetHeight && !this.state.isLoading)
+            return;
+
+        this.setState({
+            gifsOffset: this.state.gifsOffset + 25
+        });
+        this.loadFeed();
+    }
+
     loadFavorites() {
-        //localStorage.setItem("favorites", []);
-
         if (typeof (Storage) !== "undefined") {
-
             let storageFavorites = localStorage.getItem("favorites");
             if (storageFavorites == null)
                 return;
@@ -62,7 +81,6 @@ class App extends Component {
             this.setState({
                 favorites: storageFavorites.split(",")
             });
-
         } else {
             // Sorry! No Web Storage support..
         }
@@ -133,8 +151,8 @@ class App extends Component {
                     FavGiphy
                 </PageHeader>
                 <Search query={this.state.searchQuery} search={this.search} handleChange={this.updateQuery} />
-                <Functionalities feed={this.state.gifs} feedAction={this.addFavorite}
-                    favorites={this.state.favorites} favoritesAction={this.removeFavorite} />
+                <Functionalities feed={this.state.gifs} feedAction={this.addFavorite} 
+                favorites={this.state.favorites} favoritesAction={this.removeFavorite} />
             </section>
         );
     }

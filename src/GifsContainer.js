@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import { Panel } from 'react-bootstrap';
+
+import './GifsContainer.css'
 
 class GifsContainer extends Component {
     constructor(props) {
