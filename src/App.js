@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { throttle } from 'throttle-debounce';
 import { PageHeader } from 'react-bootstrap';
 import './App.css';
 
@@ -16,9 +17,11 @@ class App extends Component {
             searchQuery: "",
             gifs: [],
             gifsOffset: 0,
-            favorites: []
+            favorites: [],
+            favoritesOffset: 0
         };
 
+        this.infiniteScroll = throttle(1000, this.infiniteScroll);
         this.infiniteScroll = this.infiniteScroll.bind(this);
 
         this.search = this.search.bind(this);
@@ -60,12 +63,11 @@ class App extends Component {
             });
     }
 
-    infiniteScroll(event) {
-
-        // Check if at the end of the page
-        if ((window.innerHeight + window.scrollY) < document.body.offsetHeight && !this.state.isLoading)
+    infiniteScroll() {
+        // Check if close to the end of the page
+        if ((window.innerHeight + window.scrollY) < (document.body.offsetHeight - 200))
             return;
-
+        console.log('I requested');
         this.setState({
             gifsOffset: this.state.gifsOffset + 25
         });
