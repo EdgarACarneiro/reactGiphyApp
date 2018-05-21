@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { throttle } from 'throttle-debounce';
 import { PageHeader } from 'react-bootstrap';
-import './App.css';
+import './css/App.css';
 
 import Search from './Search';
 import Functionalities from './Functionalities';
@@ -58,7 +58,7 @@ class App extends Component {
     }
 
     loadFeed() {
-        this.state.giphy.trending("gifs", {"offset": this.state.gifsOffset})
+        this.state.giphy.trending("gifs", { "offset": this.state.gifsOffset })
             .then((response) => {
                 response.data.forEach((gif) => {
                     let newArray = this.state.gifs.slice();
@@ -160,12 +160,9 @@ class App extends Component {
     render() {
         return (
             <section>
-                <PageHeader>
-                    FavGiphy
-                </PageHeader>
                 <Search query={this.state.searchQuery} search={this.search} handleChange={this.updateQuery} />
                 <Functionalities feed={this.state.gifs} feedAction={this.addFavorite} scrollFeed={this.teste1}
-                favorites={this.state.favorites} favoritesAction={this.removeFavorite} scrollFavorites={this.teste2} />
+                    favorites={this.state.favorites} favoritesAction={this.removeFavorite} scrollFavorites={this.teste2} />
             </section>
         );
     }

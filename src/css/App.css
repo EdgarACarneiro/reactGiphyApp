@@ -1,0 +1,28 @@
+.pageHeader {
+  padding: 1em;
+  margin: 0;
+  background: rgb(238, 9, 9);
+}
+
+a {
+  color: inherit;
+}
+
+.button {
+  flex-grow: 1;
+  padding: 0.6rem;
+  padding-left: 2em;
+  padding-right: 2em;
+  margin-top: 1em;
+  font-size: 22px;
+  background: white;
+  font-weight: 600;
+  color: #ff5252;
+  border: 1px solid #ff5252;
+  border-radius: 5px;
+}
+
+.button:hover {
+  background: #ff5252;
+  color: white;
+}

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Panel } from 'react-bootstrap';
-
-import './GifsContainer.css'
+import './css/GifsContainer.css'
 
 class GifsContainer extends Component {
     constructor(props) {
@@ -12,14 +11,14 @@ class GifsContainer extends Component {
         return this.props != nextProps;
     }
 
-    /*componentDidMount() {
+    componentDidMount() {
         console.log(this.props.scrollAction);
         window.addEventListener('scroll', this.props.scrollAction);
     }
 
     componentWillUnmount() {
         window.removeEventListener('scroll', this.props.scrollAction);
-    }*/
+    }
 
     render() {
         const gifs = this.props.gifs.map((gif, i) =>
