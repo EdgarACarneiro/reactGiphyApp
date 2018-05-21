@@ -29,6 +29,9 @@ class App extends Component {
 
         this.addFavorite = this.addFavorite.bind(this);
         this.removeFavorite = this.removeFavorite.bind(this);
+
+        this.teste1 = this.teste1.bind(this);
+        this.teste2 = this.teste2.bind(this);
     }
 
     componentWillMount() {
@@ -38,12 +41,20 @@ class App extends Component {
         this.loadFavorites();
     }
 
-    componentDidMount() {
+    /*componentDidMount() {
         window.addEventListener('scroll', this.infiniteScroll);
     }
 
     componentWillUnmount() {
         window.removeEventListener('scroll', this.infiniteScroll);
+    }*/
+
+    teste1() {
+        console.log("A");
+    }
+
+    teste2() {
+        console.log("B");
     }
 
     loadFeed() {
@@ -153,8 +164,8 @@ class App extends Component {
                     FavGiphy
                 </PageHeader>
                 <Search query={this.state.searchQuery} search={this.search} handleChange={this.updateQuery} />
-                <Functionalities feed={this.state.gifs} feedAction={this.addFavorite} 
-                favorites={this.state.favorites} favoritesAction={this.removeFavorite} />
+                <Functionalities feed={this.state.gifs} feedAction={this.addFavorite} scrollFeed={this.teste1}
+                favorites={this.state.favorites} favoritesAction={this.removeFavorite} scrollFavorites={this.teste2} />
             </section>
         );
     }

@@ -12,6 +12,15 @@ class GifsContainer extends Component {
         return this.props != nextProps;
     }
 
+    /*componentDidMount() {
+        console.log(this.props.scrollAction);
+        window.addEventListener('scroll', this.props.scrollAction);
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener('scroll', this.props.scrollAction);
+    }*/
+
     render() {
         const gifs = this.props.gifs.map((gif, i) =>
             <img key={i}
