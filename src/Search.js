@@ -6,10 +6,6 @@ import FontAwesomeIcon from '@fortawesome/react-fontawesome'
 import faHeart from '@fortawesome/fontawesome-free-solid/faHeart'
 
 class Search extends Component {
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         return (
             <Navbar className="Navbar" >

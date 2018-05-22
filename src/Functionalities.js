@@ -7,10 +7,6 @@ import faTimes from '@fortawesome/fontawesome-free-solid/faTimes'
 import faHeart from '@fortawesome/fontawesome-free-solid/faHeart'
 
 class Functionalities extends Component {
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         return (
             <Router>

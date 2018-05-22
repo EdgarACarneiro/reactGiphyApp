@@ -17,7 +17,7 @@ class App extends Component {
             gifs: [],
             gifsOffset: 0,
             favorites: [],
-            favoritesLimit: 25
+            favoritesLimit: 0
         };
 
         this.infiniteScroll = throttle(1000, this.infiniteScroll);
@@ -68,9 +68,11 @@ class App extends Component {
             if (storageFavorites == null)
                 return;
 
+            let newLimit = this.state.favoritesLimit + 25
             this.setState({
-                favoritesLimit: this.state.favoritesLimit + 25,
-                favorites: storageFavorites.split(",").slice(0, this.state.favoritesLimit),
+                favoritesLimit: newLimit,
+                favorites: storageFavorites.split(",").slice(0, newLimit),
+                
             });
         } else {
             // Sorry! No Web Storage support..
@@ -98,12 +100,16 @@ class App extends Component {
 
     scrollFavorites() {
         // Only load if it has as many favorites as the previous limit
-        if (this.state.favoritesLimit == this.state.favorites.length)
+        if (this.state.favoritesLimit <= this.state.favorites.length) {
             this.loadFavorites();
+        }
     }
 
     search(event) {
         event.preventDefault();
+
+        if (this.state.searchQuery.trim() === "")
+            return;
 
         this.state.giphy.search('gifs', { "q": this.state.searchQuery })
             .then((response) => {
@@ -133,17 +139,18 @@ class App extends Component {
 
     addFavorite(event, gif) {
         let index = this.state.favorites.indexOf(gif);
+        let newArray = this.state.favorites.slice();
 
-        // Meaning gif does not yet exist
-        if (index == -1) {
-            let newArray = this.state.favorites.slice();
-            newArray.unshift(gif);
+        // Meaning gif exists, so pushing it to the top
+        if (index !== -1)
+            newArray.splice(index, 1);
+        newArray.unshift(gif);
 
-            this.setState({
-                favorites: newArray
-            });
-            localStorage.setItem("favorites", newArray);
-        }
+        this.setState({
+            favorites: newArray
+        });
+        localStorage.setItem("favorites", newArray);
+
     }
 
     removeFavorite(event, gif) {

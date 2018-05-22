@@ -4,12 +4,8 @@ import './css/GifsContainer.css'
 import FontAwesomeIcon from '@fortawesome/react-fontawesome'
 
 class GifsContainer extends Component {
-    constructor(props) {
-        super(props);
-    }
-
     shouldComponentUpdate(nextProps) {
-        return this.props != nextProps;
+        return this.props !== nextProps;
     }
 
     render() {
