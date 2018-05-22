@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Tabs, Tab } from 'react-bootstrap';
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import './css/Functionalities.css'
 
@@ -29,11 +28,11 @@ class Functionalities extends Component {
                         </Link>
                     </div>
                     <Switch>
-                        <Route path="/Favorites" render={(props) => <GifsContainer {...props} icon={faTimes} gifs={this.props.favorites}
-                            action={this.props.favoritesAction} scrollAction={this.props.scrollFavorites} />} />
+                        <Route path="/Favorites" render={(props) => <GifsContainer {...props} icon={faTimes} 
+                        gifs={this.props.favorites} action={this.props.favoritesAction} />} />
 
-                        <Route render={(props) => <GifsContainer {...props} icon={faHeart} gifs={this.props.feed}
-                            action={this.props.feedAction} scrollAction={this.props.scrollFeed} />} />
+                        <Route render={(props) => <GifsContainer {...props} icon={faHeart} 
+                        gifs={this.props.feed} action={this.props.feedAction} />} />
                     </Switch>
                 </div>
             </Router>

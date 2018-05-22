@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Panel } from 'react-bootstrap';
 import './css/GifsContainer.css'
 
 import FontAwesomeIcon from '@fortawesome/react-fontawesome'
@@ -13,21 +12,13 @@ class GifsContainer extends Component {
         return this.props != nextProps;
     }
 
-    componentDidMount() {
-        console.log(this.props.scrollAction);
-        window.addEventListener('scroll', this.props.scrollAction);
-    }
-
-    componentWillUnmount() {
-        window.removeEventListener('scroll', this.props.scrollAction);
-    }
-
     render() {
         const gifs = this.props.gifs.map((gif, i) =>
-            <figure key={i} className="effect-sarah">
+            <figure key={i}
+                onClick={((event) => this.props.action(event, gif))}
+                className="effect-sarah">
                 <span>
-                    <img onClick={((event) => this.props.action(event, gif))}
-                        src={gif} alt="" />
+                    <img src={gif} alt="" />
                 </span>
                 <figcaption>
                     <h2><FontAwesomeIcon icon={this.props.icon} /></h2>

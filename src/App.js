@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { throttle } from 'throttle-debounce';
-import { PageHeader } from 'react-bootstrap';
 import './css/App.css';
 
 import Search from './Search';
@@ -18,7 +17,7 @@ class App extends Component {
             gifs: [],
             gifsOffset: 0,
             favorites: [],
-            favoritesOffset: 0
+            favoritesLimit: 25
         };
 
         this.infiniteScroll = throttle(1000, this.infiniteScroll);
@@ -29,9 +28,6 @@ class App extends Component {
 
         this.addFavorite = this.addFavorite.bind(this);
         this.removeFavorite = this.removeFavorite.bind(this);
-
-        this.teste1 = this.teste1.bind(this);
-        this.teste2 = this.teste2.bind(this);
     }
 
     componentWillMount() {
@@ -41,20 +37,12 @@ class App extends Component {
         this.loadFavorites();
     }
 
-    /*componentDidMount() {
+    componentDidMount() {
         window.addEventListener('scroll', this.infiniteScroll);
     }
 
     componentWillUnmount() {
         window.removeEventListener('scroll', this.infiniteScroll);
-    }*/
-
-    teste1() {
-        console.log("A");
-    }
-
-    teste2() {
-        console.log("B");
     }
 
     loadFeed() {
@@ -74,17 +62,6 @@ class App extends Component {
             });
     }
 
-    infiniteScroll() {
-        // Check if close to the end of the page
-        if ((window.innerHeight + window.scrollY) < (document.body.offsetHeight - 200))
-            return;
-        console.log('I requested');
-        this.setState({
-            gifsOffset: this.state.gifsOffset + 25
-        });
-        this.loadFeed();
-    }
-
     loadFavorites() {
         if (typeof (Storage) !== "undefined") {
             let storageFavorites = localStorage.getItem("favorites");
@@ -92,11 +69,37 @@ class App extends Component {
                 return;
 
             this.setState({
-                favorites: storageFavorites.split(",")
+                favoritesLimit: this.state.favoritesLimit + 25,
+                favorites: storageFavorites.split(",").slice(0, this.state.favoritesLimit),
             });
         } else {
             // Sorry! No Web Storage support..
         }
+    }
+
+    infiniteScroll() {
+        // Check if close to the end of the page
+        if ((window.innerHeight + window.scrollY) < (document.body.scrollHeight - 400))
+            return;
+
+        if (window.location.pathname === "/Favorites") {
+            this.scrollFavorites();
+        }
+        else
+            this.scrollFeed();
+    }
+
+    scrollFeed() {
+        this.setState({
+            gifsOffset: this.state.gifsOffset + 25
+        });
+        this.loadFeed();
+    }
+
+    scrollFavorites() {
+        // Only load if it has as many favorites as the previous limit
+        if (this.state.favoritesLimit == this.state.favorites.length)
+            this.loadFavorites();
     }
 
     search(event) {
@@ -134,7 +137,7 @@ class App extends Component {
         // Meaning gif does not yet exist
         if (index == -1) {
             let newArray = this.state.favorites.slice();
-            newArray.push(gif);
+            newArray.unshift(gif);
 
             this.setState({
                 favorites: newArray
