@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Panel } from 'react-bootstrap';
 import './css/GifsContainer.css'
 
+import FontAwesomeIcon from '@fortawesome/react-fontawesome'
+
 class GifsContainer extends Component {
     constructor(props) {
         super(props);
@@ -28,7 +30,7 @@ class GifsContainer extends Component {
                         src={gif} alt="" />
                 </span>
                 <figcaption>
-                    <h2>{this.props.hoverMsg}</h2>
+                    <h2><FontAwesomeIcon icon={this.props.icon} /></h2>
                 </figcaption>
             </figure>
         );

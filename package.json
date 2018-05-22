@@ -3,7 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@fortawesome/fontawesome": "^1.1.8",
+    "@fortawesome/fontawesome-free-solid": "^5.0.13",
+    "@fortawesome/react-fontawesome": "0.0.20",
     "bootstrap": "^3.3.7",
+    "font-awesome": "^4.7.0",
     "giphy-js-sdk-core": "^1.0.3",
     "react": "^16.3.2",
     "react-bootstrap": "^0.32.1",

@@ -4,6 +4,8 @@ import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import './css/Functionalities.css'
 
 import GifsContainer from './GifsContainer';
+import faTimes from '@fortawesome/fontawesome-free-solid/faTimes'
+import faHeart from '@fortawesome/fontawesome-free-solid/faHeart'
 
 class Functionalities extends Component {
     constructor(props) {
@@ -27,10 +29,10 @@ class Functionalities extends Component {
                         </Link>
                     </div>
                     <Switch>
-                        <Route path="/Favorites" render={(props) => <GifsContainer {...props} hoverMsg={"unfavorite"} gifs={this.props.favorites}
+                        <Route path="/Favorites" render={(props) => <GifsContainer {...props} icon={faTimes} gifs={this.props.favorites}
                             action={this.props.favoritesAction} scrollAction={this.props.scrollFavorites} />} />
 
-                        <Route render={(props) => <GifsContainer {...props} hoverMsg={"favorite"} gifs={this.props.feed}
+                        <Route render={(props) => <GifsContainer {...props} icon={faHeart} gifs={this.props.feed}
                             action={this.props.feedAction} scrollAction={this.props.scrollFeed} />} />
                     </Switch>
                 </div>

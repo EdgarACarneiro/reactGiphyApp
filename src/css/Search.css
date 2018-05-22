@@ -6,6 +6,11 @@
 
 .search-btn {
     font-weight: 100;
-    font-size: 15px;
+    font-size: 14px;
     margin: 0;
+    margin-left: 1rem;
+}
+
+#pageName {
+    color: rgb(238, 9, 9);
 }
