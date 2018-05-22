@@ -12,12 +12,12 @@ class Functionalities extends Component {
             <Router>
                 <div>
                     <div className="tabs">
-                        <Link to="/">
+                        <Link to="/" className="tab">
                             <button className="button">
                                 Feed
                             </button>
                         </Link>
-                        <Link to="/Favorites">
+                        <Link to="/Favorites" className="tab">
                             <button className="button">
                                 Favorites
                             </button>

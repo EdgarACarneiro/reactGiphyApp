@@ -1,7 +1,7 @@
 /*
 Note: The biggest part of this css were taken from https://github.com/codrops/HoverEffectIdeas
-The effect used is named 'Sarah'.
-Only slight changes to adapt to the project were made.
+The effect that was used is named 'Sarah'.
+Only slight changes to adapt it to the project were made.
 */
 
 .grid {
@@ -112,7 +112,6 @@ figure.effect-sarah:hover span {
 figure.effect-sarah figcaption {
 	text-align: left;
 }
-
 
 figure.effect-sarah h2 {
     font-weight: 700;

@@ -13,10 +13,11 @@ a {
   padding: 0.6rem;
   padding-left: 2em;
   padding-right: 2em;
+  margin: 0;
   margin-top: 1em;
   font-size: 22px;
   background: white;
-  font-weight: 600;
+  font-weight: 300;
   color: #ff5252;
   border: 1px solid #ff5252;
   border-radius: 5px;
