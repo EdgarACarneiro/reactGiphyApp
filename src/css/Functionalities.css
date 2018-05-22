@@ -1,7 +1,9 @@
 .tabs {
     display: flex;
     flex-direction: row;
+    max-width: 1000px;
     justify-content: space-between;
+    margin: 0 auto;
 }
 
 .tab {
