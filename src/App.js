@@ -81,7 +81,7 @@ class App extends Component {
 
     infiniteScroll() {
         // Check if close to the end of the page
-        if ((window.innerHeight + window.scrollY) < (document.body.scrollHeight - 400))
+        if ((window.innerHeight + window.scrollY) < (document.body.scrollHeight - 600))
             return;
 
         if (window.location.pathname === "/Favorites") {
