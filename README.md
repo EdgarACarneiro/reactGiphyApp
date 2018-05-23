@@ -24,7 +24,7 @@ The requested features were:
 * Favourite and Unfavourite of Gifs, using sweet animations:
 * Routing to the Feed and Favourites pages:
 
-![Favourtie and Unfavourite clip](https://i.imgur.com/cDOGZwg.gif)
+![Favourtie and Unfavourite clip](https://i.imgur.com/MLIy4Le.gif)
 
 * Search capability:
 
@@ -32,7 +32,7 @@ The requested features were:
 
 * Self-made Infinite Scrolling on both tabs: Feed and Favourites:
 
-![Infinite Scrolling](https://i.imgur.com/1vwTBa6.gif)
+![Infinite Scrolling](https://i.imgur.com/YO3q6tt.gif)
  
  ## Possible Improvements
  
