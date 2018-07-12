@@ -42,6 +42,11 @@ The requested features were:
  - [ ] Sticky navbar featuring the 'Feed' and 'Favorites' endpoints.
  - [ ] Documentation, although the code was written so it is easily understood (using comments whenever it may be more complicated).
  
+ ## Possible Improvements according to the evaluators:
+ - [ ] No feedback when a gif is added.
+ - [ ] Gifs' fram rate is unnecessarily low.
+ - [ ] It is not easy to understand in which tab we are located in ( Feed or Favorites ) 
+ 
  ## Extra: Learning React
  
  To learn the basics of React I used [freeCodeCamp's tutorial on React](https://learn.freecodecamp.org/front-end-libraries/react).
